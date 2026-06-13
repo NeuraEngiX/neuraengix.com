@@ -1,16 +1,19 @@
+import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 import { render } from '@react-email/render';
 import { createElement } from 'react';
-import { ContactEmail } from '../../src/emails/ContactEmail';
+import { ContactEmail } from '../../emails/ContactEmail';
 
-interface Env {
+export const prerender = false;
+
+interface CloudflareEnv {
   RESEND_API_KEY: string;
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TO_ADDRESS = 'neuraenginx2026@gmail.com';
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const body = (await request.json()) as { email?: string };
     const senderEmail = body?.email?.trim() ?? '';
@@ -19,17 +22,18 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       return Response.json({ error: 'Invalid email address.' }, { status: 400 });
     }
 
-    if (!env.RESEND_API_KEY) {
+    const env = (locals as { runtime?: { env?: CloudflareEnv } }).runtime?.env;
+
+    if (!env?.RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not set');
       return Response.json({ error: 'Service unavailable.' }, { status: 503 });
     }
 
     const resend = new Resend(env.RESEND_API_KEY);
-
     const html = await render(createElement(ContactEmail, { senderEmail }));
 
     const { error } = await resend.emails.send({
-      // Replace with your verified Resend domain once neuraengix.com is verified
+      // Replace with verified Resend domain once neuraengix.com is verified
       from: 'NeuraEngiX <onboarding@resend.dev>',
       to: TO_ADDRESS,
       replyTo: senderEmail,

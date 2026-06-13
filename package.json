@@ -10,10 +10,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && wrangler pages deploy dist",
-    "cf:preview": "wrangler pages dev dist"
+    "deploy": "npm run build && wrangler deploy -c dist/server/wrangler.json",
+    "cf:preview": "wrangler dev",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
     "@astrojs/react": "^5.0.7",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.0.8",
@@ -27,5 +29,8 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260613.1",
     "wrangler": "^4.100.0"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
