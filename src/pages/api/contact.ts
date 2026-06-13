@@ -28,8 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
     const html = await render(createElement(ContactEmail, { senderEmail }));
 
     const { error } = await resend.emails.send({
-      // Replace with verified Resend domain once neuraengix.com is verified
-      from: 'NeuraEngiX <onboarding@resend.dev>',
+      from: 'NeuraEngiX <hello@neuraengix.com>',
       to: TO_ADDRESS,
       replyTo: senderEmail,
       subject: `New contact from ${senderEmail}`,
