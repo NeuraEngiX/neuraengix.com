@@ -1,17 +1,30 @@
 ---
-
+import Nav from '../components/Nav.tsx';
+import Hero from '../components/Hero.tsx';
+import Services from '../components/Services.tsx';
+import About from '../components/About.tsx';
+import CTA from '../components/CTA.tsx';
+import Footer from '../components/Footer.tsx';
+import '../styles/global.css';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="NeuraEngiX — Engineering intelligence into systems that matter. Custom neural architectures, AI integration, and intelligent automation." />
+    <title>NeuraEngiX — Engineering Intelligence</title>
+  </head>
+  <body>
+    <Nav client:load />
+    <main>
+      <Hero client:load />
+      <Services client:visible />
+      <About client:visible />
+      <CTA client:visible />
+    </main>
+    <Footer />
+  </body>
 </html>
