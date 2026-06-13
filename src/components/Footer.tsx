@@ -104,7 +104,7 @@ export default function Footer() {
             color: 'var(--text-muted)',
             letterSpacing: '0.06em',
           }}>
-            Built with Astro + React
+            neuraengix.com
           </span>
         </div>
       </div>
