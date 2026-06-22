@@ -10,13 +10,22 @@ export default function Hero() {
       overflow: 'hidden',
       zIndex: 1,
     }}>
-      {/* Hero backdrop glow (particles are now global, behind everything) */}
-      <div style={{
+      {/* Industrial refinery backdrop */}
+      <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse 70% 60% at 50% 35%, rgba(0, 120, 220, 0.16) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 50% 100%, rgba(123, 92, 255, 0.12) 0%, transparent 70%)',
         pointerEvents: 'none',
-      }} />
+        backgroundImage: 'url(/hero-bg.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
+        {/* darkening overlay: flat scrim + center spotlight + fade to page bg */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(3,7,17,0.78) 0%, rgba(3,7,17,0.62) 50%, rgba(3,7,17,0.5) 80%), linear-gradient(180deg, rgba(3,7,17,0.6) 0%, rgba(3,7,17,0.45) 40%, rgba(3,7,17,0.55) 70%, var(--bg-void) 100%)',
+        }} />
+      </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ maxWidth: '880px', margin: '0 auto', paddingTop: '120px', paddingBottom: '120px' }}>
@@ -61,6 +70,7 @@ export default function Hero() {
             lineHeight: 1.05,
             letterSpacing: '-0.02em',
             marginBottom: '1.5rem',
+            textShadow: '0 2px 24px rgba(3, 7, 17, 0.75)',
             animation: 'fadeUp 0.6s 0.1s ease both',
             opacity: 0,
           }}>
@@ -74,11 +84,12 @@ export default function Hero() {
           {/* Subtext */}
           <p style={{
             fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-            color: 'var(--text-secondary)',
-            fontWeight: 300,
+            color: '#cdd9ec',
+            fontWeight: 400,
             lineHeight: 1.7,
             maxWidth: '660px',
             margin: '0 auto 2.5rem',
+            textShadow: '0 1px 12px rgba(3, 7, 17, 0.85)',
             animation: 'fadeUp 0.6s 0.2s ease both',
             opacity: 0,
           }}>
@@ -181,13 +192,15 @@ export default function Hero() {
                   color: 'var(--cyan)',
                   lineHeight: 1,
                   marginBottom: '4px',
+                  textShadow: '0 1px 14px rgba(3, 7, 17, 0.9)',
                 }}>{stat.value}</div>
                 <div style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.68rem',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--text-muted)',
+                  color: '#9fb2cc',
+                  textShadow: '0 1px 10px rgba(3, 7, 17, 0.9)',
                 }}>{stat.label}</div>
               </div>
             ))}
