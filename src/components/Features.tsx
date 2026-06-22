@@ -18,9 +18,7 @@ export default function Features() {
           accent="Advanced AI"
           subtitle="Everything you need to generate, convert, and ship industrial control code with confidence."
         />
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        <div className="grid-3" style={{
           gap: '1.5px',
           background: 'var(--border-subtle)',
           border: '1px solid var(--border-subtle)',

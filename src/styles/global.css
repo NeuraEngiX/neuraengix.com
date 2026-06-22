@@ -118,6 +118,15 @@ a {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Fixed 3-column grid (Success Stories 3x2, Features 3x2) → 1 col on mobile */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr; }
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }

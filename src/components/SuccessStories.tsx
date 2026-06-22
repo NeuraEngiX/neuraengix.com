@@ -20,11 +20,7 @@ export default function SuccessStories() {
           accent="Success Stories"
           subtitle="What teams ship when PLC code writes itself."
         />
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1.25rem',
-        }}>
+        <div className="grid-3" style={{ gap: '1.25rem' }}>
           {stories.map(s => (
             <div key={s.title} style={{
               padding: '2rem',
