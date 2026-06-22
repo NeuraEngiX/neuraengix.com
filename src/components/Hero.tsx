@@ -1,109 +1,25 @@
-import { useEffect, useRef } from 'react';
-
 export default function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    const nodes: Array<{ x: number; y: number; vx: number; vy: number; r: number }> = [];
-    const count = 60;
-
-    for (let i = 0; i < count; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 2 + 1,
-      });
-    }
-
-    let raf: number;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const n of nodes) {
-        n.x += n.vx;
-        n.y += n.vy;
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-      }
-
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(0, 200, 255, ${0.18 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-
-      for (const n of nodes) {
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 200, 255, 0.5)';
-        ctx.fill();
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-
-    const onResize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    window.addEventListener('resize', onResize);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
-
   return (
     <section style={{
       position: 'relative',
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
       overflow: 'hidden',
       zIndex: 1,
     }}>
-      {/* Neural network canvas background */}
-      <canvas ref={canvasRef} style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        opacity: 0.6,
-      }} />
-
-      {/* Radial spotlight */}
+      {/* Hero backdrop glow (particles are now global, behind everything) */}
       <div style={{
         position: 'absolute',
-        bottom: -200,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '80vw',
-        height: '60vh',
-        background: 'radial-gradient(ellipse, rgba(0, 80, 160, 0.18) 0%, transparent 70%)',
+        inset: 0,
+        background: 'radial-gradient(ellipse 70% 60% at 50% 35%, rgba(0, 120, 220, 0.16) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 50% 100%, rgba(123, 92, 255, 0.12) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div style={{ maxWidth: '780px', paddingTop: '120px', paddingBottom: '120px' }}>
+        <div style={{ maxWidth: '880px', margin: '0 auto', paddingTop: '120px', paddingBottom: '120px' }}>
 
           {/* Badge */}
           <div style={{
@@ -133,14 +49,14 @@ export default function Hero() {
               textTransform: 'uppercase',
               color: 'var(--cyan)',
             }}>
-              AI Engineering — Next Generation
+              AI for Industrial Automation
             </span>
           </div>
 
           {/* Main heading */}
           <h1 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.8rem, 7vw, 5.5rem)',
+            fontSize: 'clamp(2.6rem, 6.5vw, 5rem)',
             fontWeight: 800,
             lineHeight: 1.05,
             letterSpacing: '-0.02em',
@@ -148,14 +64,11 @@ export default function Hero() {
             animation: 'fadeUp 0.6s 0.1s ease both',
             opacity: 0,
           }}>
-            Engineering
+            Generate, Convert &amp;
             <br />
-            <span style={{
-              color: 'var(--cyan)',
-              textShadow: '0 0 60px rgba(0, 200, 255, 0.3)',
-            }}>Intelligence</span>
+            <span className="gradient-text">Modernize PLC Code</span>
             <br />
-            Into Systems
+            in Minutes, Not Weeks
           </h1>
 
           {/* Subtext */}
@@ -164,14 +77,15 @@ export default function Hero() {
             color: 'var(--text-secondary)',
             fontWeight: 300,
             lineHeight: 1.7,
-            maxWidth: '560px',
-            marginBottom: '2.5rem',
+            maxWidth: '660px',
+            margin: '0 auto 2.5rem',
             animation: 'fadeUp 0.6s 0.2s ease both',
             opacity: 0,
           }}>
-            NeuraEngiX builds AI-powered engineering systems that think, adapt, and scale.
-            From neural architecture design to full-stack intelligent automation — we turn
-            complex problems into competitive advantage.
+            NeuraEngiX is AI-powered PLC development for Rockwell, Siemens, CODESYS,
+            Beckhoff and more. Import existing logic, translate across vendors, and
+            export native formats like L5X and PLCopen XML — without sacrificing
+            quality or compliance.
           </p>
 
           {/* CTAs */}
@@ -179,10 +93,11 @@ export default function Hero() {
             display: 'flex',
             gap: '1rem',
             flexWrap: 'wrap',
+            justifyContent: 'center',
             animation: 'fadeUp 0.6s 0.3s ease both',
             opacity: 0,
           }}>
-            <a href="#contact" style={{
+            <a href="#waitlist" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
@@ -207,12 +122,12 @@ export default function Hero() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
             >
-              Start a Project
+              Join the Waitlist
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
-            <a href="#services" style={{
+            <a href="#how-it-works" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
@@ -237,7 +152,7 @@ export default function Hero() {
               e.currentTarget.style.color = 'var(--text-primary)';
             }}
             >
-              Explore Services
+              See How It Works
             </a>
           </div>
 
@@ -249,15 +164,16 @@ export default function Hero() {
             paddingTop: '2rem',
             borderTop: '1px solid var(--border-subtle)',
             flexWrap: 'wrap',
+            justifyContent: 'center',
             animation: 'fadeUp 0.6s 0.4s ease both',
             opacity: 0,
           }}>
             {[
-              { value: '98%', label: 'Model Accuracy' },
-              { value: '10×', label: 'Faster Iteration' },
-              { value: '50+', label: 'AI Systems Built' },
+              { value: '5+', label: 'PLC Platforms' },
+              { value: '10×', label: 'Faster Delivery' },
+              { value: '0', label: 'Vendor Lock-in' },
             ].map(stat => (
-              <div key={stat.value}>
+              <div key={stat.label}>
                 <div style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: '1.8rem',

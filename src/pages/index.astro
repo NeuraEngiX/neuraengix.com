@@ -1,9 +1,15 @@
 ---
 export const prerender = true;
 import Nav from '../components/Nav.tsx';
+import ParticleBackground from '../components/ParticleBackground.tsx';
 import Hero from '../components/Hero.tsx';
-import Services from '../components/Services.tsx';
-import About from '../components/About.tsx';
+import ProductWays from '../components/ProductWays.tsx';
+import SuccessStories from '../components/SuccessStories.tsx';
+import Features from '../components/Features.tsx';
+import HowItWorks from '../components/HowItWorks.tsx';
+import UseCases from '../components/UseCases.tsx';
+import Numbers from '../components/Numbers.tsx';
+import FAQ from '../components/FAQ.tsx';
 import CTA from '../components/CTA.tsx';
 import Footer from '../components/Footer.tsx';
 import '../styles/global.css';
@@ -15,15 +21,21 @@ import '../styles/global.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="NeuraEngiX — Engineering intelligence into systems that matter. Custom neural architectures, AI integration, and intelligent automation." />
-    <title>NeuraEngiX — Engineering Intelligence</title>
+    <meta name="description" content="NeuraEngiX — AI-powered PLC code generation. Generate, convert, and modernize industrial control code for Rockwell, Siemens, CODESYS, and Beckhoff in minutes." />
+    <title>NeuraEngiX — Generate, Convert & Modernize PLC Code with AI</title>
   </head>
   <body>
+    <ParticleBackground client:load />
     <Nav client:load />
     <main>
       <Hero client:load />
-      <Services client:visible />
-      <About client:visible />
+      <ProductWays client:visible />
+      <SuccessStories client:visible />
+      <Features client:visible />
+      <HowItWorks client:visible />
+      <UseCases client:visible />
+      <Numbers client:visible />
+      <FAQ client:visible />
       <CTA client:visible />
     </main>
     <Footer />

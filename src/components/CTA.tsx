@@ -39,49 +39,29 @@ export default function CTA() {
   const isLoading = status === 'loading';
 
   return (
-    <section id="contact" style={{
-      position: 'relative',
-      zIndex: 1,
-      padding: '8rem 0',
-    }}>
+    <section id="waitlist" style={{ position: 'relative', zIndex: 1, padding: '8rem 0' }}>
       <div className="container">
         <div style={{
           position: 'relative',
           padding: 'clamp(3rem, 6vw, 5rem)',
-          background: 'var(--bg-surface)',
-          border: '1px solid var(--border-subtle)',
+          background: 'var(--gradient-surface)',
+          border: '1px solid var(--border-glow)',
+          borderRadius: 'var(--radius-md)',
           overflow: 'hidden',
         }}>
-          {/* Background decoration */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
+            background: 'var(--gradient-accent)',
+          }} />
           <div style={{
             position: 'absolute',
             top: '-50%',
             right: '-10%',
             width: '60%',
             height: '200%',
-            background: 'radial-gradient(ellipse, rgba(0, 200, 255, 0.04) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(123, 92, 255, 0.06) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
-
-          {/* Corner marks */}
-          {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map(corner => {
-            const isRight = corner.includes('right');
-            const isBottom = corner.includes('bottom');
-            return (
-              <div key={corner} style={{
-                position: 'absolute',
-                [isBottom ? 'bottom' : 'top']: 0,
-                [isRight ? 'right' : 'left']: 0,
-                width: '20px',
-                height: '20px',
-                borderTop: !isBottom ? '2px solid var(--cyan)' : 'none',
-                borderBottom: isBottom ? '2px solid var(--cyan)' : 'none',
-                borderLeft: !isRight ? '2px solid var(--cyan)' : 'none',
-                borderRight: isRight ? '2px solid var(--cyan)' : 'none',
-                opacity: 0.5,
-              }} />
-            );
-          })}
 
           <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '640px', margin: '0 auto' }}>
             <div style={{
@@ -92,7 +72,7 @@ export default function CTA() {
               color: 'var(--cyan)',
               marginBottom: '1.5rem',
             }}>
-              // 03 — Let's Build
+              // Join the Waitlist
             </div>
 
             <h2 style={{
@@ -100,12 +80,12 @@ export default function CTA() {
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 800,
               letterSpacing: '-0.02em',
-              lineHeight: 1.1,
+              lineHeight: 1.12,
               marginBottom: '1.25rem',
             }}>
-              Ready to Engineer
+              Ready to Turn Requirements into
               <br />
-              <span style={{ color: 'var(--cyan)' }}>Your Intelligence Layer?</span>
+              <span className="gradient-text">PLC Code Instantly?</span>
             </h2>
 
             <p style={{
@@ -114,8 +94,8 @@ export default function CTA() {
               lineHeight: 1.7,
               marginBottom: '2.5rem',
             }}>
-              Whether you're starting from scratch or scaling an existing AI system,
-              we'll meet you where you are. Let's scope your project together.
+              Be among the first to generate, convert, and modernize industrial control
+              code with AI. Drop your email and we’ll reach out with early access.
             </p>
 
             {status === 'success' ? (
@@ -135,26 +115,16 @@ export default function CTA() {
                   color: 'var(--green)',
                   marginBottom: '0.5rem',
                 }}>
-                  ✓ Message received
+                  ✓ You’re on the list
                 </div>
-                <p style={{
-                  margin: 0,
-                  fontSize: '0.9rem',
-                  color: 'var(--text-secondary)',
-                }}>
-                  We'll be in touch within 24 hours.
+                <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                  We’ll be in touch within 24 hours with early access details.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                style={{
-                  display: 'flex',
-                  gap: '0',
-                  maxWidth: '480px',
-                  margin: '0 auto',
-                  flexWrap: 'wrap',
-                }}
+                style={{ display: 'flex', gap: '0', maxWidth: '480px', margin: '0 auto', flexWrap: 'wrap' }}
               >
                 <input
                   ref={inputRef}
@@ -196,12 +166,12 @@ export default function CTA() {
                     transition: 'all 0.2s',
                     boxShadow: '0 0 20px rgba(0, 200, 255, 0.25)',
                     flexShrink: 0,
-                    minWidth: '140px',
+                    minWidth: '150px',
                   }}
                   onMouseEnter={e => { if (!isLoading) e.currentTarget.style.boxShadow = '0 0 40px rgba(0, 200, 255, 0.4)'; }}
                   onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 200, 255, 0.25)'; }}
                 >
-                  {isLoading ? 'Sending…' : 'Get in Touch'}
+                  {isLoading ? 'Joining…' : 'Join the Waitlist'}
                 </button>
               </form>
             )}

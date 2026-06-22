@@ -30,6 +30,18 @@
 
   --shadow-glow: 0 0 40px rgba(0, 200, 255, 0.12);
   --shadow-glow-strong: 0 0 80px rgba(0, 200, 255, 0.2);
+
+  /* itanta-style gradient accents (cyan -> purple) */
+  --gradient-accent: linear-gradient(135deg, #00c8ff 0%, #7b5cff 100%);
+  --gradient-surface: linear-gradient(160deg, rgba(0, 200, 255, 0.08), rgba(123, 92, 255, 0.08));
+}
+
+.gradient-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 *, *::before, *::after {
@@ -95,6 +107,15 @@ a {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+/* Fixed 4-column grid (Numbers 4x2, Use Cases 4x3) → 2 cols on mobile */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 768px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @keyframes fadeUp {
