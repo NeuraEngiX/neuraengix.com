@@ -1,39 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg-void: #030711;
-  --bg-deep: #070d1a;
-  --bg-surface: #0d1525;
-  --bg-elevated: #111e30;
-  --border-subtle: rgba(0, 200, 255, 0.08);
-  --border-glow: rgba(0, 200, 255, 0.25);
+  --bg-void: #DFDEDC;
+  --bg-deep: #DFDEDC;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f5f5f3;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-glow: rgba(0, 172, 172, 0.35);
 
-  --cyan: #00c8ff;
-  --cyan-dim: rgba(0, 200, 255, 0.6);
-  --cyan-ghost: rgba(0, 200, 255, 0.08);
-  --green: #00ff87;
-  --green-dim: rgba(0, 255, 135, 0.6);
-  --amber: #ffb800;
+  --cyan: #00ACAC;
+  --cyan-dim: rgba(0, 172, 172, 0.6);
+  --cyan-ghost: rgba(0, 172, 172, 0.08);
+  --green: #00ACAC;
+  --green-dim: rgba(0, 172, 172, 0.6);
+  --amber: #00ACAC;
 
-  --text-primary: #e8f0fe;
-  --text-secondary: #8da0b8;
-  --text-muted: #4a6080;
-  --text-code: #00c8ff;
+  --text-primary: #000000;
+  --text-secondary: #464545;
+  --text-muted: #A6A7A2;
+  --text-code: #00ACAC;
 
-  --font-display: 'Oxanium', sans-serif;
-  --font-body: 'Figtree', sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-xl: 24px;
 
-  --shadow-glow: 0 0 40px rgba(0, 200, 255, 0.12);
-  --shadow-glow-strong: 0 0 80px rgba(0, 200, 255, 0.2);
+  --shadow-glow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-glow-strong: 0 16px 40px rgba(0, 0, 0, 0.12);
 
-  /* itanta-style gradient accents (cyan -> purple) */
-  --gradient-accent: linear-gradient(135deg, #00c8ff 0%, #7b5cff 100%);
-  --gradient-surface: linear-gradient(160deg, rgba(0, 200, 255, 0.08), rgba(123, 92, 255, 0.08));
+  /* flat teal — keeps .gradient-text rendering as solid teal */
+  --gradient-accent: linear-gradient(135deg, #00ACAC 0%, #00ACAC 100%);
+  --gradient-surface: linear-gradient(160deg, rgba(0, 172, 172, 0.06), rgba(0, 172, 172, 0.06));
 }
 
 .gradient-text {
@@ -62,33 +63,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Circuit grid background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Radial ambient light */
-body::after {
-  content: '';
-  position: fixed;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120vw;
-  height: 80vh;
-  background: radial-gradient(ellipse at center, rgba(0, 100, 200, 0.06) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
 }
 
 a {
