@@ -2,12 +2,12 @@ import SectionHeader from './SectionHeader';
 
 // Pastel-tinted story tiles, itanta-style.
 const stories = [
-  { title: 'From weeks to hours', metric: '90%', sub: 'less delivery time', tint: 'rgba(0, 200, 255, 0.10)' },
-  { title: 'Legacy migration, automated', metric: '1,000+', sub: 'routines converted', tint: 'rgba(123, 92, 255, 0.12)' },
-  { title: 'Vendor-agnostic by default', metric: '5+', sub: 'platforms supported', tint: 'rgba(0, 255, 135, 0.10)' },
-  { title: 'Compliance built in', metric: 'IEC 61131', sub: 'standard-conformant output', tint: 'rgba(255, 184, 0, 0.10)' },
-  { title: 'Zero hand-written boilerplate', metric: '0', sub: 'lines of scaffolding', tint: 'rgba(0, 200, 255, 0.10)' },
-  { title: 'Time to first program', metric: '<2h', sub: 'from sign-up to export', tint: 'rgba(123, 92, 255, 0.12)' },
+  { title: 'From weeks to hours', metric: '90%', sub: 'less delivery time', tint: 'rgba(0, 172, 172, 0.10)' },
+  { title: 'Legacy migration, automated', metric: '1,000+', sub: 'routines converted', tint: 'rgba(0, 172, 172, 0.06)' },
+  { title: 'Vendor-agnostic by default', metric: '5+', sub: 'platforms supported', tint: 'rgba(0, 172, 172, 0.12)' },
+  { title: 'Compliance built in', metric: 'IEC 61131', sub: 'standard-conformant output', tint: 'rgba(0, 172, 172, 0.06)' },
+  { title: 'Zero hand-written boilerplate', metric: '0', sub: 'lines of scaffolding', tint: 'rgba(0, 172, 172, 0.10)' },
+  { title: 'Time to first program', metric: '<2h', sub: 'from sign-up to export', tint: 'rgba(0, 172, 172, 0.12)' },
 ];
 
 export default function SuccessStories() {

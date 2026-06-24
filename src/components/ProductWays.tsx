@@ -96,7 +96,7 @@ function ProductCard({ label, desc, cta }: { label: string; desc: string; cta: s
         gap: '8px',
         padding: '0.7rem 1.5rem',
         background: 'var(--cyan)',
-        color: 'var(--bg-void)',
+        color: '#ffffff',
         fontFamily: 'var(--font-display)',
         fontWeight: 700,
         fontSize: '0.78rem',
@@ -104,10 +104,10 @@ function ProductCard({ label, desc, cta }: { label: string; desc: string; cta: s
         textTransform: 'uppercase',
         borderRadius: 'var(--radius-sm)',
         transition: 'all 0.2s',
-        boxShadow: '0 0 20px rgba(0, 200, 255, 0.25)',
+        boxShadow: 'none',
       }}
-      onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 40px rgba(0, 200, 255, 0.45)'; }}
-      onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 200, 255, 0.25)'; }}
+      onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.95)'; }}
+      onMouseLeave={e => { e.currentTarget.style.filter = 'none'; }}
       >{cta}</a>
     </div>
   );
