@@ -26,12 +26,12 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
               <div style={{ width: '30px', height: '30px' }}>
                 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-                  <polygon points="16,2 30,10 30,22 16,30 2,22 2,10" stroke="#00c8ff" strokeWidth="1.5" fill="none" />
-                  <circle cx="16" cy="16" r="4" fill="#00c8ff" />
-                  <line x1="16" y1="2" x2="16" y2="12" stroke="#00c8ff" strokeWidth="1" opacity="0.5" />
-                  <line x1="16" y1="20" x2="16" y2="30" stroke="#00c8ff" strokeWidth="1" opacity="0.5" />
-                  <line x1="2" y1="10" x2="12" y2="16" stroke="#00c8ff" strokeWidth="1" opacity="0.5" />
-                  <line x1="20" y1="16" x2="30" y2="10" stroke="#00c8ff" strokeWidth="1" opacity="0.5" />
+                  <polygon points="16,2 30,10 30,22 16,30 2,22 2,10" stroke="#00ACAC" strokeWidth="1.5" fill="none" />
+                  <circle cx="16" cy="16" r="4" fill="#00ACAC" />
+                  <line x1="16" y1="2" x2="16" y2="12" stroke="#00ACAC" strokeWidth="1" opacity="0.5" />
+                  <line x1="16" y1="20" x2="16" y2="30" stroke="#00ACAC" strokeWidth="1" opacity="0.5" />
+                  <line x1="2" y1="10" x2="12" y2="16" stroke="#00ACAC" strokeWidth="1" opacity="0.5" />
+                  <line x1="20" y1="16" x2="30" y2="10" stroke="#00ACAC" strokeWidth="1" opacity="0.5" />
                 </svg>
               </div>
               <span style={{
