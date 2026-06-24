@@ -59,7 +59,7 @@ export default function CTA() {
             right: '-10%',
             width: '60%',
             height: '200%',
-            background: 'radial-gradient(ellipse, rgba(123, 92, 255, 0.06) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(0, 172, 172, 0.06) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
 
@@ -101,8 +101,8 @@ export default function CTA() {
             {status === 'success' ? (
               <div style={{
                 padding: '1.5rem 2rem',
-                background: 'rgba(0, 255, 135, 0.06)',
-                border: '1px solid rgba(0, 255, 135, 0.25)',
+                background: 'var(--cyan-ghost)',
+                border: '1px solid var(--border-glow)',
                 borderRadius: 'var(--radius-md)',
                 maxWidth: '480px',
                 margin: '0 auto',
@@ -153,8 +153,8 @@ export default function CTA() {
                   disabled={isLoading}
                   style={{
                     padding: '0.875rem 1.75rem',
-                    background: isLoading ? 'rgba(0,200,255,0.5)' : 'var(--cyan)',
-                    color: 'var(--bg-void)',
+                    background: isLoading ? 'rgba(0,172,172,0.5)' : 'var(--cyan)',
+                    color: '#ffffff',
                     fontFamily: 'var(--font-display)',
                     fontWeight: 700,
                     fontSize: '0.8rem',
@@ -164,12 +164,12 @@ export default function CTA() {
                     cursor: isLoading ? 'not-allowed' : 'pointer',
                     borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
                     transition: 'all 0.2s',
-                    boxShadow: '0 0 20px rgba(0, 200, 255, 0.25)',
+                    boxShadow: 'none',
                     flexShrink: 0,
                     minWidth: '150px',
                   }}
-                  onMouseEnter={e => { if (!isLoading) e.currentTarget.style.boxShadow = '0 0 40px rgba(0, 200, 255, 0.4)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 200, 255, 0.25)'; }}
+                  onMouseEnter={e => { if (!isLoading) e.currentTarget.style.filter = 'brightness(0.95)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.filter = 'none'; }}
                 >
                   {isLoading ? 'Joining…' : 'Join the Waitlist'}
                 </button>
@@ -181,7 +181,7 @@ export default function CTA() {
                 marginTop: '0.75rem',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.68rem',
-                color: '#ff6b6b',
+                color: '#ba1a1a',
                 letterSpacing: '0.06em',
               }}>
                 {errorMsg}
