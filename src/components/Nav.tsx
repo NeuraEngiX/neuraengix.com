@@ -18,8 +18,11 @@ export default function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/75 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-6">
         {/* Brand */}
-        <a href="#top" className="flex shrink-0 items-center">
-          <img src="/neuraengix-logo.png" alt="NeuraEngiX" className="h-11 w-auto object-contain" />
+        <a href="#top" className="flex shrink-0 items-center gap-2">
+          <img src="/neuraengix-emblem.png" alt="NeuraEngiX" className="h-10 w-auto object-contain" />
+          <span className="font-display text-lg font-bold tracking-wide text-foreground">
+            NEURA<span className="text-primary">ENGIX</span>
+          </span>
         </a>
 
         {/* Centered nav */}
