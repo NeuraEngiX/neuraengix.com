@@ -1,9 +1,9 @@
-import { Zap, Workflow, Brain } from "lucide-react";
+import { ArrowRight, Zap, Workflow, Brain } from "lucide-react";
 
 const features = [
-  { icon: Zap, title: "Build Faster", body: "AI-assisted PLC code generation from standardized templates and specifications." },
-  { icon: Workflow, title: "Standardize Better", body: "Enforce coding guidelines, libraries, and configurable architectures across projects." },
-  { icon: Brain, title: "Engineer Smarter", body: "Validate logic, catch defects early, and learn from every project with AI insights." },
+  { icon: Zap, title: "Generate Faster", body: "Convert engineering requirements into PLC logic with AI-assisted code generation." },
+  { icon: Workflow, title: "Standardize Better", body: "Apply reusable libraries, proven architectures, coding standards, and engineering practices across projects." },
+  { icon: Brain, title: "Validate Smarter", body: "Automatically check generated logic against FDS requirements and engineering standards to improve quality and reduce rework." },
 ];
 
 export default function LogicMind() {
@@ -22,8 +22,13 @@ export default function LogicMind() {
               LogicMind™
             </span>
           </h2>
+          <p className="mt-4 text-lg font-semibold text-foreground">
+            AI-Powered PLC Engineering. From Requirements to Verified Code.
+          </p>
           <p className="mt-4 text-lg text-muted-foreground">
-            Transform PLC engineering with AI. Build Faster. Standardize Better. Engineer Smarter.
+            Transform{" "}
+            <span className="font-semibold text-foreground">I/O Lists and FDS documents into standardized, validated PLC code</span>{" "}
+            using the NeuraEngiX AI Engineering Agent.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -38,6 +43,17 @@ export default function LogicMind() {
               <p className="mt-3 text-sm text-muted-foreground">{body}</p>
             </div>
           ))}
+        </div>
+        <p className="mt-10 text-center text-sm font-semibold uppercase tracking-[0.15em] text-primary">
+          Vendor-neutral. Compatible with major PLC platforms.
+        </p>
+        <div className="mt-8 text-center">
+          <a
+            href="/industrial-ai"
+            className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary/60 hover:text-primary"
+          >
+            Explore LogicMind <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>

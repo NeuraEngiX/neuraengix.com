@@ -1,4 +1,4 @@
-import { ClipboardCheck, Network, ShieldCheck, GraduationCap } from "lucide-react";
+import { ArrowRight, ClipboardCheck, Network, ShieldCheck, GraduationCap } from "lucide-react";
 import SectionTitle from "./SectionHeader";
 
 const services = [
@@ -29,6 +29,14 @@ export default function Cyber() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <a
+            href="/ot-cybersecurity"
+            className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary/60 hover:text-primary"
+          >
+            Explore all OT cybersecurity services <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>

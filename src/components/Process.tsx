@@ -1,5 +1,4 @@
 import { Compass, Map, Wrench, ClipboardCheck, Sparkles } from "lucide-react";
-import SectionTitle from "./SectionHeader";
 
 const steps = [
   { icon: Compass, title: "Discovery & Assessment", body: "Evaluate existing engineering standards, tools, templates, and workflows to identify gaps and improvement opportunities." },
@@ -13,7 +12,6 @@ export default function Process() {
   return (
     <section id="process" className="border-t border-border/40 py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionTitle eyebrow="How We Work" title="A rigorous, engineering-led approach" />
         <div className="relative">
           <div className="absolute left-6 top-0 bottom-0 hidden w-px bg-gradient-to-b from-primary via-border to-transparent md:block" />
           <div className="space-y-6">

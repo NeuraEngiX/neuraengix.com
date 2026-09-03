@@ -1,30 +1,45 @@
-import { ShieldCheck, Lock, Zap, Users, CheckCircle2, Building2 } from "lucide-react";
+import { Cog, Lock, Lightbulb } from "lucide-react";
 import SectionTitle from "./SectionHeader";
 
 const items = [
-  { icon: ShieldCheck, label: "Safety First" },
-  { icon: Lock, label: "Security by Design" },
-  { icon: Zap, label: "Business Continuity" },
-  { icon: Users, label: "Vendor Neutral" },
-  { icon: CheckCircle2, label: "Standards Driven" },
-  { icon: Building2, label: "Long-Term Partnership" },
+  {
+    icon: Cog,
+    title: "Engineering Excellence",
+    body: "Intelligent, reliable engineering built for real industrial environments.",
+  },
+  {
+    icon: Lock,
+    title: "Security by Design",
+    body: "Security embedded from engineering and automation to connected operations.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation with Purpose",
+    body: "Turning AI and digitalization into practical solutions that create measurable value.",
+  },
 ];
 
 export default function Principles() {
   return (
     <section className="border-t border-border/40 py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionTitle eyebrow="Our Principles" title="Principles in action" subtitle="The values that guide every engagement." />
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-          {items.map(({ icon: Icon, label }) => (
+        <SectionTitle
+          eyebrow="Our Principles"
+          title="Principles that shape how we engineer"
+          subtitle="The principles behind every solution, technology, and partnership."
+        />
+        <div className="grid gap-8 md:grid-cols-3">
+          {items.map(({ icon: Icon, title, body }) => (
             <div
-              key={label}
-              className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-6 text-center transition-colors hover:border-primary/50"
+              key={title}
+              className="rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
+              style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-primary/30">
-                <Icon className="h-5 w-5" />
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/30">
+                <Icon className="h-6 w-6" />
               </div>
-              <div className="text-sm font-medium">{label}</div>
+              <h3 className="text-xl font-semibold">{title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
             </div>
           ))}
         </div>
