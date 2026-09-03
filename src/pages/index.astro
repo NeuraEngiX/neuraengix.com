@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
-import Nav from '../components/Nav.tsx';
+import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.tsx';
-import About from '../components/About.tsx';
+import StatsBand from '../components/StatsBand.tsx';
 import VisionMission from '../components/VisionMission.tsx';
 import Principles from '../components/Principles.tsx';
 import Process from '../components/Process.tsx';
@@ -12,34 +12,21 @@ import Demos from '../components/Demos.tsx';
 import Pricing from '../components/Pricing.tsx';
 import Partnership from '../components/Partnership.tsx';
 import CTA from '../components/CTA.tsx';
-import Footer from '../components/Footer.tsx';
-import '../styles/global.css';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="NeuraEngiX — Industrial AI, Automation, and OT Cybersecurity. AI-powered PLC engineering with NeuraEngiX LogicMind™ and IEC 62443-aligned OT security for manufacturing." />
-    <title>NeuraEngiX — Amplifying Engineering Intelligence</title>
-  </head>
-  <body>
-    <Nav client:load />
-    <main>
-      <Hero client:load />
-      <About client:visible />
-      <VisionMission client:visible />
-      <Principles client:visible />
-      <Process client:visible />
-      <LogicMind client:visible />
-      <Cyber client:visible />
-      <Demos client:visible />
-      <Pricing client:visible />
-      <Partnership client:visible />
-      <CTA client:visible />
-    </main>
-    <Footer />
-  </body>
-</html>
+<Base
+  title="NeuraEngiX — Amplifying Engineering Intelligence"
+  description="NeuraEngiX — Industrial AI, Automation, and OT Cybersecurity. AI-powered PLC engineering with NeuraEngiX LogicMind™ and IEC 62443-aligned OT security for manufacturing."
+>
+  <Hero client:load />
+  <StatsBand />
+  <VisionMission client:visible />
+  <Principles client:visible />
+  <Process client:visible />
+  <LogicMind client:visible />
+  <Cyber client:visible />
+  <Demos client:visible />
+  <Pricing client:visible />
+  <Partnership client:visible />
+  <CTA client:visible />
+</Base>
