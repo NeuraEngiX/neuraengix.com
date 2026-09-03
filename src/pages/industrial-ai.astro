@@ -1,0 +1,44 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import SolutionPage from '../components/SolutionPage.tsx';
+import CTA from '../components/CTA.tsx';
+import { Zap, Workflow, Brain } from 'lucide-react';
+
+const items = [
+  {
+    icon: Zap,
+    title: 'Generate Faster',
+    body: 'Convert engineering requirements into PLC logic with AI-assisted code generation.',
+  },
+  {
+    icon: Workflow,
+    title: 'Standardize Better',
+    body: 'Apply reusable libraries, proven architectures, coding standards, and engineering practices across projects.',
+  },
+  {
+    icon: Brain,
+    title: 'Validate Smarter',
+    body: 'Automatically check generated logic against FDS requirements and engineering standards to improve quality and reduce rework.',
+  },
+];
+---
+
+<Base
+  title="NeuraEngiX LogicMind™ — Industrial AI Platform"
+  description="AI-powered PLC engineering. Transform I/O Lists and FDS documents into standardized, validated PLC code with the NeuraEngiX AI Engineering Agent. Vendor-neutral."
+>
+  <SolutionPage
+    eyebrow="NeuraEngiX LogicMind™"
+    title="AI-powered PLC engineering. From requirements to verified code."
+    intro={[
+      'Transform I/O Lists and FDS documents into standardized, validated PLC code using the NeuraEngiX AI Engineering Agent.',
+    ]}
+    items={items}
+    closing={{
+      title: 'Vendor-neutral by design',
+      body: 'Compatible with major PLC platforms — so standardization does not lock you into a single vendor.',
+    }}
+  />
+  <CTA client:visible />
+</Base>

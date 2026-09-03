@@ -1,0 +1,56 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import SolutionPage from '../components/SolutionPage.tsx';
+import CTA from '../components/CTA.tsx';
+import { Boxes, LineChart, TrendingUp, SlidersHorizontal, Link2, Repeat } from 'lucide-react';
+
+const items = [
+  {
+    icon: Boxes,
+    title: 'Model',
+    body: 'Create engineering-driven digital representations of machines, equipment, production lines and processes using mechanical, electrical, automation and process data.',
+  },
+  {
+    icon: LineChart,
+    title: 'Simulate & Analyze',
+    body: 'Simulate system behavior, process flows and operating conditions to identify bottlenecks, evaluate alternatives and understand system performance without disrupting the physical operation.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Predict',
+    body: 'Use simulation models and real operational data to anticipate equipment and process behavior, identify potential issues and evaluate future operating conditions.',
+  },
+  {
+    icon: SlidersHorizontal,
+    title: 'Optimize',
+    body: 'Run what-if scenarios to improve throughput, utilization, quality, energy efficiency, maintenance and overall plant performance.',
+  },
+  {
+    icon: Link2,
+    title: 'Connect',
+    body: 'Connect Digital Twins with PLC, SCADA, IoT and industrial data sources to compare modeled behavior with actual plant performance and generate actionable insights.',
+  },
+  {
+    icon: Repeat,
+    title: 'Lifecycle Intelligence',
+    body: 'Extend the Digital Twin from engineering and design through commissioning, operation and continuous improvement, creating a digital foundation for smarter industrial decision-making.',
+  },
+];
+---
+
+<Base
+  title="Digital Twin & Virtual Commissioning — NeuraEngiX"
+  description="Intelligent Digital Twins of machines, production lines and industrial plants — simulate, analyze, predict and optimize system performance before and during operation."
+>
+  <SolutionPage
+    eyebrow="Digital Twin & Virtual Commissioning"
+    title="Build a digital replica. Predict the real world."
+    intro={[
+      'NeuraEngiX creates intelligent Digital Twins of machines, production lines and industrial plants, combining engineering models, process behavior, automation logic and operational data.',
+      'Our Digital Twin solutions enable industries to simulate, analyze, predict and optimize system performance — supporting better engineering decisions and continuous operational improvement.',
+    ]}
+    items={items}
+  />
+  <CTA client:visible />
+</Base>

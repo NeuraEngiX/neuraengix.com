@@ -1,0 +1,65 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import SolutionPage from '../components/SolutionPage.tsx';
+import CTA from '../components/CTA.tsx';
+import { Activity, Gauge, TrendingUp, Zap, CheckCircle2, Database, MousePointerClick } from 'lucide-react';
+
+const items = [
+  {
+    icon: Activity,
+    title: 'Real-Time Plant Intelligence',
+    body: 'Connect and visualize production, process and equipment data through real-time dashboards and KPIs — giving teams immediate visibility into plant performance.',
+  },
+  {
+    icon: Gauge,
+    title: 'OEE & Production Analytics',
+    body: 'Track equipment effectiveness, production performance and downtime to identify losses, understand root causes and improve operational efficiency.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Predictive Maintenance & Asset Intelligence',
+    body: 'Use machine data and AI-driven analytics to identify abnormal behavior, anticipate potential failures and support proactive maintenance decisions.',
+  },
+  {
+    icon: Zap,
+    title: 'Energy & Utility Analytics',
+    body: 'Monitor energy and utility consumption across machines, lines and plants to identify inefficiencies, abnormal consumption and opportunities for cost reduction.',
+  },
+  {
+    icon: CheckCircle2,
+    title: 'Quality & Process Analytics',
+    body: 'Analyze process parameters, quality data and production trends to identify deviations, improve consistency and support data-driven quality improvement.',
+  },
+  {
+    icon: Database,
+    title: 'Unified Industrial Data',
+    body: 'Connect and contextualize data from PLC, SCADA, DCS, MES, ERP, IoT and other plant systems to create a consistent foundation for industrial analytics and digital transformation.',
+  },
+  {
+    icon: MousePointerClick,
+    title: 'No-Code Analytics',
+    body: 'Enable engineers and operations teams to build dashboards, KPIs, reports and alerts without depending on custom software development.',
+  },
+];
+---
+
+<Base
+  title="Industrial Data & Analytics — NeuraEngiX"
+  description="Connect, contextualize and analyze operational data to improve productivity, quality, energy efficiency, asset performance and decision-making across your plant."
+>
+  <SolutionPage
+    eyebrow="Industrial Data & Analytics"
+    title="Turn industrial data into actionable intelligence"
+    intro={[
+      'NeuraEngiX helps manufacturers connect, contextualize and analyze operational data to improve productivity, quality, energy efficiency, asset performance and decision-making.',
+      'Through our technology partnership, we provide a no-code industrial analytics platform that connects plant data from PLCs, SCADA, DCS, IoT devices and enterprise systems into a unified view of operations.',
+    ]}
+    items={items}
+    closing={{
+      title: 'From data to decisions',
+      body: 'Our focus is not simply collecting plant data — it is turning that data into visibility, insight and action that improves industrial performance.',
+    }}
+  />
+  <CTA client:visible />
+</Base>
