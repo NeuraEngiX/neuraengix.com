@@ -1,0 +1,51 @@
+import { Gauge, ShieldCheck, Target, BarChart3 } from "lucide-react";
+
+const stats = [
+  {
+    icon: Gauge,
+    value: "90%",
+    label: "Faster PLC Development",
+    sub: "with AI-powered automation",
+  },
+  {
+    icon: ShieldCheck,
+    value: "100%",
+    label: "IEC 62443 Aligned",
+    sub: "Secure by design. Built for trust.",
+  },
+  {
+    icon: Target,
+    value: "Consistent",
+    label: "Engineering Consistency",
+    sub: "Standardized. Reliable. Scalable.",
+  },
+  {
+    icon: BarChart3,
+    value: "Automated",
+    label: "Repetitive Coding Tasks",
+    sub: "Handled via AI generation.",
+  },
+];
+
+export default function StatsBand() {
+  return (
+    <section className="border-y border-border/40 bg-card/30">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map(({ icon: Icon, value, label, sub }) => (
+          <div key={label} className="flex items-start gap-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-background/60 text-primary">
+              <Icon className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="font-display text-2xl font-bold leading-tight text-foreground">
+                {value}
+              </div>
+              <div className="mt-0.5 text-sm font-semibold text-foreground">{label}</div>
+              <div className="mt-0.5 text-xs text-muted-foreground">{sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

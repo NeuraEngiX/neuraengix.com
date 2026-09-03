@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, ArrowDownRight, ShieldAlert, Zap } from "lucide-react";
+import { ArrowRight, FileText, Zap, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -24,10 +24,6 @@ export default function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.4fr_1fr]">
         {/* LEFT — headline */}
         <div>
-          <div className="mb-8 inline-flex items-center gap-3 rounded-md border border-primary/40 bg-background/60 px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_currentColor]" />
-            Industrial AI · Automation · OT Cybersecurity
-          </div>
           <h1 className="font-display font-bold leading-[0.95] tracking-tight text-foreground text-6xl md:text-7xl lg:text-[7.5rem]">
             <span className="block">Amplifying</span>
             <span className="block text-primary" style={{ textShadow: "0 0 40px oklch(0.82 0.14 195 / 0.35)" }}>
@@ -36,20 +32,23 @@ export default function Hero() {
             <span className="block">Intelligence</span>
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            NeuraEngiX is an Industrial AI, Automation, and OT Cybersecurity
-            company accelerating digital transformation and engineering
-            productivity across manufacturing industries.
+            <span className="font-semibold text-foreground">NeuraEngiX Technologies</span> is
+            an Industrial Digitalization company helping manufacturers accelerate their
+            digital transformation through Industrial AI, Digital Twin, OT Cybersecurity,
+            and intelligent automation solutions. We empower organizations to design,
+            secure, optimize, and modernize industrial operations by combining deep
+            automation expertise with next-generation AI technologies.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <a
-              href="#logicmind"
+              href="/industrial-ai"
               className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
               style={{ boxShadow: "var(--shadow-glow)" }}
             >
               Explore LogicMind <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#cyber"
+              href="/ot-cybersecurity"
               className="text-sm font-semibold text-foreground underline-offset-4 hover:text-primary hover:underline"
             >
               OT Cybersecurity
@@ -57,7 +56,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT — live metrics panel */}
+        {/* RIGHT — LogicMind: requirements in, verified code out */}
         <div className="rounded-xl border border-border bg-card/70 p-6 backdrop-blur-md" style={{ boxShadow: "var(--shadow-card)" }}>
           <div className="mb-5 flex items-center gap-2 font-mono text-xs text-primary">
             <span className="relative flex h-2 w-2">
@@ -66,27 +65,79 @@ export default function Hero() {
             </span>
             neuraengix.logicmind — live
           </div>
-          <div className="divide-y divide-border/60">
-            {[
-              { label: "PLC Development Speed", value: "90%", sub: "faster than manual coding", color: "text-primary", icon: Zap, iconColor: "text-primary" },
-              { label: "Engineering Consistency", value: "High", sub: "IEC 61131-3 compliant output", color: "text-emerald-400", icon: ArrowUpRight, iconColor: "text-emerald-400", prefix: "↑" },
-              { label: "Repetitive Coding Tasks", value: "Low", sub: "automated via AI generation", color: "text-amber-400", icon: ArrowDownRight, iconColor: "text-amber-400", prefix: "↓" },
-              { label: "OT Cybersecurity Standard", value: "IEC 62443", sub: "aligned implementation", color: "text-violet-400", icon: ShieldAlert, iconColor: "text-violet-400" },
-            ].map((m) => (
-              <div key={m.label} className="flex items-start justify-between gap-4 py-4">
-                <div>
-                  <div className="text-xs font-medium tracking-wide text-muted-foreground">{m.label}</div>
-                  <div className={`mt-1 font-mono text-2xl font-bold ${m.color}`}>
-                    {m.prefix ? <span className="mr-1">{m.prefix}</span> : null}
-                    {m.value}
-                  </div>
-                  <div className="mt-1 text-xs text-muted-foreground">{m.sub}</div>
-                </div>
-                <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border bg-background/60 ${m.iconColor}`}>
-                  <m.icon className="h-4 w-4" />
-                </div>
-              </div>
+
+          {/* Input */}
+          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Input
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {["FDS_Pump_Control.docx", "IO_List.xlsx"].map((f) => (
+              <span
+                key={f}
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-3 py-2 font-mono text-xs text-muted-foreground"
+              >
+                <FileText className="h-3.5 w-3.5 text-primary" />
+                {f}
+              </span>
             ))}
+          </div>
+
+          {/* Agent */}
+          <div className="my-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-border" />
+            <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-primary">
+              <Zap className="h-3 w-3" /> AI Engineering Agent
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          {/* Output */}
+          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Output — IEC 61131-3 Structured Text
+          </div>
+          <pre className="mt-3 overflow-x-auto rounded-lg border border-border bg-background/80 p-4 font-mono text-[11px] leading-relaxed">
+            <code>
+              <span className="text-violet-400">FUNCTION_BLOCK</span>{" "}
+              <span className="text-foreground">FB_PumpControl</span>
+              {"\n"}
+              <span className="text-violet-400">VAR_INPUT</span>
+              {"\n  "}
+              <span className="text-foreground">xStart</span>
+              <span className="text-muted-foreground"> : </span>
+              <span className="text-primary">BOOL</span>
+              <span className="text-muted-foreground">;</span>
+              {"\n  "}
+              <span className="text-foreground">rSetpoint</span>
+              <span className="text-muted-foreground"> : </span>
+              <span className="text-primary">REAL</span>
+              <span className="text-muted-foreground">;</span>
+              {"\n"}
+              <span className="text-violet-400">END_VAR</span>
+              {"\n\n"}
+              <span className="text-muted-foreground">{"// interlock per FDS §4.2"}</span>
+              {"\n"}
+              <span className="text-violet-400">IF</span>
+              <span className="text-foreground"> xStart </span>
+              <span className="text-violet-400">AND NOT</span>
+              <span className="text-foreground"> xTripped </span>
+              <span className="text-violet-400">THEN</span>
+              {"\n  "}
+              <span className="text-foreground">xRun </span>
+              <span className="text-muted-foreground">:= </span>
+              <span className="text-primary">TRUE</span>
+              <span className="text-muted-foreground">;</span>
+              {"\n"}
+              <span className="text-violet-400">END_IF</span>
+            </code>
+          </pre>
+
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+            <span className="inline-flex items-center gap-1.5 text-emerald-400">
+              <CheckCircle2 className="h-3.5 w-3.5" /> Validated against FDS
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-muted-foreground">
+              <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Vendor-neutral output
+            </span>
           </div>
         </div>
       </div>
