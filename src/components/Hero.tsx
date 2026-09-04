@@ -39,6 +39,10 @@ export default function Hero() {
             secure, optimize, and modernize industrial operations by combining deep
             automation expertise with next-generation AI technologies.
           </p>
+          <p className="mt-5 max-w-xl text-base font-semibold leading-relaxed text-foreground">
+            From intelligent engineering to secure industrial operations — empowering
+            industries to build smarter, safer, and future-ready manufacturing systems.
+          </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <a
               href="/industrial-ai"

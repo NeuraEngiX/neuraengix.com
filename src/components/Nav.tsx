@@ -4,7 +4,6 @@ const links = [
   ["About", "/about"],
   ["LogicMind", "/industrial-ai"],
   ["Cybersecurity", "/ot-cybersecurity"],
-  ["How We Work", "/#process"],
   ["Demos", "/#demos"],
   ["Pricing", "/#pricing"],
   ["Partnership", "/#b2b"],
