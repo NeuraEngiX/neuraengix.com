@@ -98,7 +98,9 @@ const mobileLink =
       .filter((h) => h.startsWith('/#'))
       .map((h) => h.slice(2)),
   )];
-  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+  const sections = ids
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => el !== null);
 
   if (sections.length) {
     const io = new IntersectionObserver(
@@ -126,7 +128,7 @@ const mobileLink =
   let open = false;
 
   // inline display so the panel's own xl:hidden still wins on desktop
-  function setOpen(next) {
+  function setOpen(next: boolean) {
     open = next;
     if (panel) panel.style.display = open ? '' : 'none';
     if (iconOpen) iconOpen.style.display = open ? 'none' : '';
