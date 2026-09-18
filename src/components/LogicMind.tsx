@@ -23,12 +23,12 @@ export default function LogicMind() {
             </span>
           </h2>
           <p className="mt-4 text-lg font-semibold text-foreground">
-            AI-Powered PLC Engineering. From Requirements to Verified Code.
+            AI-Powered Automation Engineering. From P&amp;ID to Validated Code.
           </p>
           <p className="mt-4 text-lg text-muted-foreground">
             Transform{" "}
-            <span className="font-semibold text-foreground">I/O Lists and FDS documents into standardized, validated PLC code</span>{" "}
-            using the NeuraEngiX AI Engineering Agent.
+            <span className="font-semibold text-foreground">P&amp;IDs and FDS documents into standardized I/O lists, PLC code, and HMI screens</span>{" "}
+            with the NeuraEngiX LogicMind.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">

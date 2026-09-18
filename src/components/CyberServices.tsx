@@ -18,16 +18,14 @@ const pillars = [
     includes: [
       "OT/ICS Cybersecurity Assessment",
       "OT Asset Discovery & Inventory",
-      "OT Risk Assessment",
-      "IEC 62443 Gap Assessment",
-      "Security Level Assessment",
+      "OT Risk & Criticality Assessment",
+      "IEC 62443 Gap & Security Level Assessment",
       "Zone & Conduit Assessment",
-      "Asset Criticality Assessment",
       "Security Maturity Assessment",
       "Security Architecture Review",
-      "Mitigation Planning",
+      "Mitigation & Remediation Planning",
       "Compliance Roadmap Development",
-      "CAPEX & OPEX Cybersecurity Planning",
+      "Cybersecurity CAPEX & OPEX Planning",
     ],
     footnote: {
       label: "Frameworks",
@@ -177,7 +175,7 @@ export default function CyberServices() {
       {/* Four pillars */}
       <section className="pb-8">
         <div className="mx-auto max-w-7xl space-y-8 px-6">
-          {pillars.map(({ icon: Icon, title, tagline, body, includes, footnote }, i) => (
+          {pillars.map(({ icon: Icon, title, tagline, body, includes, footnote }) => (
             <div
               key={title}
               className="rounded-2xl border border-border bg-card p-8 md:p-10"
@@ -187,14 +185,9 @@ export default function CyberServices() {
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/30">
                   <Icon className="h-6 w-6" />
                 </div>
-                <div>
-                  <div className="font-mono text-xs font-semibold text-primary">
-                    0{i + 1}
-                  </div>
-                  <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                    {title}
-                  </h2>
-                </div>
+                <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+                  {title}
+                </h2>
               </div>
 
               <p className="mt-6 text-lg font-semibold text-foreground">{tagline}</p>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   ["About", "/about"],
@@ -12,6 +12,43 @@ const links = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  // set after mount so server and client render the same markup
+  const [path, setPath] = useState("");
+  const [section, setSection] = useState("");
+
+  useEffect(() => {
+    setPath(window.location.pathname);
+
+    const els = links
+      .filter(([, href]) => href.startsWith("/#"))
+      .map(([, href]) => document.getElementById(href.slice(2)))
+      .filter((el): el is HTMLElement => el !== null);
+    if (!els.length) return;
+
+    // ponytail: band-based scroll spy — whichever section crosses the upper
+    // third wins; last one sticks when none does. Good enough for 4 anchors.
+    const io = new IntersectionObserver(
+      (entries) => {
+        const hit = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (hit) setSection(hit.target.id);
+      },
+      { rootMargin: "-20% 0px -70% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  // keep the URL deep-linkable without stacking history entries
+  useEffect(() => {
+    if (section && window.location.hash !== `#${section}`) {
+      history.replaceState(null, "", `#${section}`);
+    }
+  }, [section]);
+
+  const isActive = (href: string) =>
+    href.startsWith("/#") ? path === "/" && href.slice(2) === section : path === href;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/75 backdrop-blur-xl">
@@ -30,7 +67,12 @@ export default function Nav() {
             <a
               key={href}
               href={href}
-              className="text-[15px] font-medium text-muted-foreground transition-colors hover:text-primary"
+              aria-current={isActive(href) ? "page" : undefined}
+              className={`text-[15px] font-medium transition-colors hover:text-primary ${
+                isActive(href)
+                  ? "text-primary after:mt-1 after:block after:h-0.5 after:w-full after:rounded-full after:bg-primary after:content-['']"
+                  : "text-muted-foreground"
+              }`}
             >
               {label}
             </a>
@@ -69,7 +111,10 @@ export default function Nav() {
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`py-3 text-sm font-medium transition-colors hover:text-primary ${
+                  isActive(href) ? "text-primary" : "text-muted-foreground"
+                }`}
               >
                 {label}
               </a>

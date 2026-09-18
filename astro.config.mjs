@@ -10,6 +10,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
+  prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },
   integrations: [react()],
   adapter: cloudflare(),
   vite: {
