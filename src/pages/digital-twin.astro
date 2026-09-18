@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-import SolutionPage from '../components/SolutionPage.tsx';
-import CTA from '../components/CTA.tsx';
+import SolutionPage from '../components/SolutionPage.astro';
+import CTA from '../components/CTA.astro';
 import { Boxes, LineChart, TrendingUp, SlidersHorizontal, Link2, Repeat } from 'lucide-react';
 
 const items = [
@@ -52,5 +52,5 @@ const items = [
     ]}
     items={items}
   />
-  <CTA client:visible />
+  <CTA />
 </Base>

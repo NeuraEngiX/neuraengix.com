@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-import SolutionPage from '../components/SolutionPage.tsx';
-import CTA from '../components/CTA.tsx';
+import SolutionPage from '../components/SolutionPage.astro';
+import CTA from '../components/CTA.astro';
 import { Zap, Workflow, Brain } from 'lucide-react';
 
 const items = [
@@ -40,5 +40,5 @@ const items = [
       body: 'Compatible with major PLC platforms.',
     }}
   />
-  <CTA client:visible />
+  <CTA />
 </Base>

@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-import CyberServices from '../components/CyberServices.tsx';
-import CTA from '../components/CTA.tsx';
+import CyberServices from '../components/CyberServices.astro';
+import CTA from '../components/CTA.astro';
 ---
 
 <Base
@@ -10,5 +10,5 @@ import CTA from '../components/CTA.tsx';
   description="Engineering-led OT cybersecurity for manufacturers, process industries, EPC contractors and OEMs. Assess, secure, validate and sustain industrial operations aligned with ISA/IEC 62443."
 >
   <CyberServices />
-  <CTA client:visible />
+  <CTA />
 </Base>

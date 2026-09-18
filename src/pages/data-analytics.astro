@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-import SolutionPage from '../components/SolutionPage.tsx';
-import CTA from '../components/CTA.tsx';
+import SolutionPage from '../components/SolutionPage.astro';
+import CTA from '../components/CTA.astro';
 import { Activity, Gauge, TrendingUp, Zap, CheckCircle2, Database, MousePointerClick } from 'lucide-react';
 
 const items = [
@@ -61,5 +61,5 @@ const items = [
       body: 'Our focus is not simply collecting plant data — it is turning that data into visibility, insight and action that improves industrial performance.',
     }}
   />
-  <CTA client:visible />
+  <CTA />
 </Base>

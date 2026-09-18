@@ -1,0 +1,46 @@
+---
+import { Cog, Lock, Lightbulb } from "lucide-react";
+import SectionTitle from "./SectionHeader.astro";
+
+const items = [
+  {
+    icon: Cog,
+    title: "Engineering Excellence",
+    body: "Intelligent, reliable engineering built for real industrial environments.",
+  },
+  {
+    icon: Lock,
+    title: "Security by Design",
+    body: "Security embedded from engineering and automation to connected operations.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation with Purpose",
+    body: "Turning AI and digitalization into practical solutions that create measurable value.",
+  },
+];
+---
+
+<section class="border-t border-border/40 py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <SectionTitle
+      eyebrow="Our Principles"
+      title="Principles that shape how we engineer"
+      subtitle="The principles behind every solution, technology, and partnership."
+    />
+    <div class="grid gap-8 md:grid-cols-3">
+      {items.map(({ icon: Icon, title, body }) => (
+        <div
+          class="rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
+          style={{ boxShadow: "var(--shadow-card)" }}
+        >
+          <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/30">
+            <Icon className="h-6 w-6" />
+          </div>
+          <h3 class="text-xl font-semibold">{title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

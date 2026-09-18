@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-import About from '../components/About.tsx';
-import CTA from '../components/CTA.tsx';
+import About from '../components/About.astro';
+import CTA from '../components/CTA.astro';
 ---
 
 <Base
@@ -10,5 +10,5 @@ import CTA from '../components/CTA.tsx';
   description="NeuraEngiX Technologies is an industrial technology company transforming engineering and manufacturing through AI, cybersecurity, data, and digital technologies."
 >
   <About />
-  <CTA client:visible />
+  <CTA />
 </Base>

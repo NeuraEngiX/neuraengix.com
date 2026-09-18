@@ -1,0 +1,140 @@
+---
+const links = [
+  ['About', '/about'],
+  ['LogicMind', '/industrial-ai'],
+  ['Cybersecurity', '/ot-cybersecurity'],
+  ['Demos', '/#demos'],
+  ['Pricing', '/#pricing'],
+  ['Partnership', '/#b2b'],
+  ['Contact', '/#contact'],
+];
+
+const desktopLink =
+  "text-[15px] font-medium text-muted-foreground transition-colors hover:text-primary data-[active]:text-primary data-[active]:after:mt-1 data-[active]:after:block data-[active]:after:h-0.5 data-[active]:after:w-full data-[active]:after:rounded-full data-[active]:after:bg-primary data-[active]:after:content-['']";
+
+const mobileLink =
+  'py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-primary data-[active]:text-primary';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/75 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-7xl items-center gap-6 px-6">
+    {/* Brand */}
+    <a href="/" class="flex shrink-0 items-center gap-2">
+      <img src="/neuraengix-emblem.png" alt="NeuraEngiX" class="h-10 w-auto object-contain" />
+      <span class="font-display text-lg font-bold tracking-wide text-foreground">
+        Neura<span class="text-primary">EngiX</span>
+      </span>
+    </a>
+
+    {/* Centered nav */}
+    <nav class="hidden flex-1 items-center justify-center gap-7 xl:flex">
+      {links.map(([label, href]) => (
+        <a href={href} data-nav-link class={desktopLink}>{label}</a>
+      ))}
+    </nav>
+
+    {/* CTA */}
+    <a
+      href="/#contact"
+      class="ml-auto inline-flex shrink-0 items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 xl:ml-0"
+      style={{ boxShadow: "var(--shadow-glow)" }}
+    >
+      Get in Touch
+    </a>
+
+    {/* Mobile menu toggle */}
+    <button
+      type="button"
+      id="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-panel"
+      class="inline-flex shrink-0 items-center justify-center rounded-md p-2 text-foreground xl:hidden"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-6 w-6">
+        <path id="nav-icon-open" d="M4 7h16M4 12h16M4 17h16"></path>
+        <path id="nav-icon-close" d="M6 6l12 12M18 6L6 18" style="display:none"></path>
+      </svg>
+    </button>
+  </div>
+
+  {/* Mobile menu panel */}
+  <nav id="nav-panel" class="border-t border-border/40 bg-background/95 backdrop-blur-xl xl:hidden" style="display:none">
+    <div class="mx-auto flex max-w-7xl flex-col px-6 py-2">
+      {links.map(([label, href]) => (
+        <a href={href} data-nav-link class={mobileLink}>{label}</a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<script>
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  const path = window.location.pathname;
+  let section = '';
+
+  function paint() {
+    navLinks.forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const active = href.startsWith('/#')
+        ? path === '/' && href.slice(2) === section
+        : path === href;
+      if (active) {
+        a.setAttribute('data-active', '');
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.removeAttribute('data-active');
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
+  paint();
+
+  // ponytail: band-based scroll spy — whichever section crosses the upper
+  // third wins; last one sticks when none does. Good enough for 4 anchors.
+  const ids = [...new Set(
+    [...navLinks]
+      .map((a) => a.getAttribute('href') || '')
+      .filter((h) => h.startsWith('/#'))
+      .map((h) => h.slice(2)),
+  )];
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+
+  if (sections.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        const hit = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!hit) return;
+        section = hit.target.id;
+        paint();
+        // deep-linkable without stacking history entries
+        if (window.location.hash !== `#${section}`) {
+          history.replaceState(null, '', `#${section}`);
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    sections.forEach((el) => io.observe(el));
+  }
+
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('nav-panel');
+  const iconOpen = document.getElementById('nav-icon-open');
+  const iconClose = document.getElementById('nav-icon-close');
+  let open = false;
+
+  // inline display so the panel's own xl:hidden still wins on desktop
+  function setOpen(next) {
+    open = next;
+    if (panel) panel.style.display = open ? '' : 'none';
+    if (iconOpen) iconOpen.style.display = open ? 'none' : '';
+    if (iconClose) iconClose.style.display = open ? '' : 'none';
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  toggle?.addEventListener('click', () => setOpen(!open));
+  panel?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+</script>

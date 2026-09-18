@@ -1,0 +1,93 @@
+---
+import { ArrowRight, Loader2 } from 'lucide-react';
+---
+
+<section id="contact" class="border-t border-border/40 py-24">
+  <div class="mx-auto max-w-5xl px-6">
+    <div
+      class="relative overflow-hidden rounded-3xl border border-primary/40 p-12 text-center md:p-16"
+      style={{ background: "linear-gradient(135deg, oklch(0.22 0.05 200 / 0.4), oklch(0.16 0.015 220))", boxShadow: "var(--shadow-glow)" }}
+    >
+      <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl"></div>
+      <h2 class="text-3xl font-bold tracking-tight md:text-5xl">
+        Build intelligent, secure, future-ready industrial systems.
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+        Let's discuss how NeuraEngiX can accelerate your engineering and secure your operations.
+      </p>
+
+      <p id="cta-success" class="mt-8 font-semibold text-primary" style="display:none">
+        Thanks — we'll be in touch shortly.
+      </p>
+
+      <form id="cta-form" class="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+        <input
+          id="cta-email"
+          type="email"
+          required
+          placeholder="you@company.com"
+          class="w-full rounded-md border border-border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="inline-flex shrink-0 items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-transform hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
+          style={{ background: "var(--gradient-teal)" }}
+        >
+          <span id="cta-label" class="inline-flex items-center gap-2">
+            Get in touch <ArrowRight className="h-4 w-4" />
+          </span>
+          <span id="cta-spinner" style="display:none">
+            <Loader2 className="h-4 w-4 animate-spin" />
+          </span>
+        </button>
+      </form>
+
+      <p id="cta-error" class="mt-3 text-sm text-destructive" style="display:none"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('cta-form');
+  const input = document.getElementById('cta-email');
+  const success = document.getElementById('cta-success');
+  const error = document.getElementById('cta-error');
+  const label = document.getElementById('cta-label');
+  const spinner = document.getElementById('cta-spinner');
+  const button = form?.querySelector('button');
+
+  // inline display, not [hidden]: Tailwind's inline-flex would win the cascade
+  const show = (el, on) => {
+    if (el) el.style.display = on ? '' : 'none';
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = input?.value.trim() ?? '';
+    if (!email) return;
+
+    if (button) button.disabled = true;
+    show(label, false);
+    show(spinner, true);
+    show(error, false);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      show(form, false);
+      show(success, true);
+    } catch (err) {
+      if (error) error.textContent = err instanceof Error ? err.message : 'Something went wrong.';
+      show(error, true);
+    } finally {
+      if (button) button.disabled = false;
+      show(label, true);
+      show(spinner, false);
+    }
+  });
+</script>

@@ -1,16 +1,16 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.tsx';
-import StatsBand from '../components/StatsBand.tsx';
-import VisionMission from '../components/VisionMission.tsx';
-import Principles from '../components/Principles.tsx';
-import LogicMind from '../components/LogicMind.tsx';
-import Cyber from '../components/Cyber.tsx';
-import Demos from '../components/Demos.tsx';
-import Pricing from '../components/Pricing.tsx';
-import Partnership from '../components/Partnership.tsx';
-import CTA from '../components/CTA.tsx';
+import Hero from '../components/Hero.astro';
+import StatsBand from '../components/StatsBand.astro';
+import VisionMission from '../components/VisionMission.astro';
+import Principles from '../components/Principles.astro';
+import LogicMind from '../components/LogicMind.astro';
+import Cyber from '../components/Cyber.astro';
+import Demos from '../components/Demos.astro';
+import Pricing from '../components/Pricing.astro';
+import Partnership from '../components/Partnership.astro';
+import CTA from '../components/CTA.astro';
 ---
 
 <Base
@@ -26,5 +26,5 @@ import CTA from '../components/CTA.tsx';
   <Demos />
   <Pricing />
   <Partnership />
-  <CTA client:visible />
+  <CTA />
 </Base>
