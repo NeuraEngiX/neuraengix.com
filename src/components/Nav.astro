@@ -70,7 +70,9 @@ const mobileLink =
 
 <script>
   const navLinks = document.querySelectorAll('[data-nav-link]');
-  const path = window.location.pathname;
+  // prerendered routes are served as /about/, hrefs are written /about
+  const trim = (p: string) => (p.length > 1 && p.endsWith('/') ? p.slice(0, -1) : p);
+  const path = trim(window.location.pathname);
   let section = '';
 
   function paint() {
@@ -78,7 +80,7 @@ const mobileLink =
       const href = a.getAttribute('href') || '';
       const active = href.startsWith('/#')
         ? path === '/' && href.slice(2) === section
-        : path === href;
+        : path === trim(href);
       if (active) {
         a.setAttribute('data-active', '');
         a.setAttribute('aria-current', 'page');
